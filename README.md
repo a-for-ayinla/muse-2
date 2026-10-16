@@ -25,9 +25,24 @@ tracks open on the platform you choose.
 ## Brand lock
 
 The palette, logo mark/wordmark, Bagel Fat One + Fredoka fonts and chunky component style
-are **locked**. Change tokens in `src/config/brand.ts` / `globals.css` only. Dark theme is
-default; light theme reuses the exact same tokens in different semantic roles. The theme
+are **locked**. Change tokens in `src/config/brand.ts` / `globals.css` only. The theme
 toggle persists per device.
+
+Dark theme is the default. Light theme reassigns the **same semantic tokens** — `bg`, `tx`,
+`tx2`, `ph`, `surf`, `deep`, `raise`, `line`, `card-line`, `inner-line`, `field`,
+`field-line`, `shadow`, `muted`, `dim`, `accent`, `accent-2`, `focus` — so every surface,
+border and text role flips together: cream page, paper cards, warm wells, ink type and ink
+shadows. The brand constants (`ink`, `cream`, `lime`, `pink`) never move, except where they
+are used as *text* on a surface, which is what `--accent` / `--accent-2` are for (lime and
+hibiscus deepened so they stay legible on cream).
+
+Two rules keep that working:
+
+- Components style themselves with token classes only — `bg-surf`, `bg-deep`, `bg-raise`,
+  `bg-field`, `text-tx`, `text-tx2`, `text-accent`, `border-card-line`, `border-line`,
+  `border-fieldline`. Never a hard-coded surface hex (`#2A2D23`, `#34372C`, `#4A4D40`, …).
+- `text-cream` is reserved for text on a **fixed** ink surface (`bg-ink`, the dialog scrim).
+  It is not the default body colour — `text-tx` is.
 
 ## Setup
 
@@ -71,7 +86,10 @@ idempotently seeds its clearly-fictional catalog into `music_tracks` on first se
 5. /history → open and delete a conversation; delete all.
 6. /create → save artist profile, generate a plan (all labelled *Suggestion*), tick checklist items, rename, delete.
 7. /settings → edit prefs, delete all conversations, delete account (password confirm).
-8. Theme toggle → persists across reloads; `/dev/ui` returns 404 in production.
+8. Theme toggle → persists across reloads. Flip to light on `/`, `/login` and every page under
+   `/listen`, `/create`, `/playlists`, `/history`, `/settings`: no dark panels survive, no text
+   goes invisible, dialogs/cards/inputs all read as paper. `/dev/ui` shows every primitive in
+   both themes (404 in production).
 9. Mobile widths (360/390/768/1280) — no horizontal overflow; bottom tab bar with 44px targets.
 
 ## Honesty boundaries

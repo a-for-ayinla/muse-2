@@ -109,14 +109,14 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
       </div>
 
       {isDemo && (
-        <p role="note" className="rounded-2xl border-2 border-dashed border-lime/70 bg-surf px-4 py-3 text-sm text-cream/85">
+        <p role="note" className="rounded-2xl border-2 border-dashed border-accent/70 bg-surf px-4 py-3 text-sm text-tx/85">
           Demo data is on — tracks you save come from the fictional sample catalog.
         </p>
       )}
 
       {playlists.length === 0 ? (
         <div className="grid place-items-center gap-3 rounded-[28px] border-2 border-dashed border-fieldline px-6 py-16 text-center">
-          <ListMusic size={36} aria-hidden className="text-lime" />
+          <ListMusic size={36} aria-hidden className="text-accent" />
           <p className="font-bagel text-2xl text-tx">No playlists yet</p>
           <p className="max-w-md text-sm text-tx2">
             Ask Muse for something smooth in Listen, then save the winners. Or start an empty one now.
@@ -128,11 +128,11 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
           {playlists.map((p) => (
             <li
               key={p.id}
-              className="group flex items-center gap-4 rounded-[28px] border-2 border-[#2A2D23] bg-surf p-4 text-cream transition-all hover:-translate-y-1 hover:border-lime/60 hover:shadow-[6px_6px_0_var(--raise)]"
+              className="group flex items-center gap-4 rounded-[28px] border-2 border-card-line bg-surf p-4 text-tx transition-all hover:-translate-y-1 hover:border-accent/60 hover:shadow-[6px_6px_0_var(--raise)]"
             >
               <ArtTile title={p.title} size={72} />
               <div className="min-w-0 flex-1">
-                <Link href={`/playlists/${p.id}`} className="block truncate rounded font-bagel text-xl hover:text-lime">
+                <Link href={`/playlists/${p.id}`} className="block truncate rounded font-bagel text-xl hover:text-accent">
                   {p.title}
                 </Link>
                 <p className="text-sm text-dim">
@@ -149,7 +149,7 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
                   type="button"
                   aria-label={`Rename ${p.title}`}
                   onClick={() => { setRenaming(p); setRenameValue(p.title); }}
-                  className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-lime"
+                  className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent"
                 >
                   <Pencil size={17} aria-hidden />
                 </button>
@@ -157,7 +157,7 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
                   type="button"
                   aria-label={`Delete ${p.title}`}
                   onClick={() => setDeleting(p)}
-                  className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-pink"
+                  className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent-2"
                 >
                   <Trash2 size={17} aria-hidden />
                 </button>
@@ -170,10 +170,10 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
       <Dialog open={createOpen} onClose={() => setCreateOpen(false)} title="New playlist">
         <div className="grid gap-4">
           <Field label="Name" htmlFor="pl-name">
-            <Input id="pl-name" value={title} onChange={(e) => setTitle(e.target.value)} maxLength={80} placeholder="e.g. Owambe starters" className="bg-raise text-cream" />
+            <Input id="pl-name" value={title} onChange={(e) => setTitle(e.target.value)} maxLength={80} placeholder="e.g. Owambe starters" />
           </Field>
           <Field label="Description (optional)" htmlFor="pl-desc">
-            <Textarea id="pl-desc" value={description} onChange={(e) => setDescription(e.target.value)} maxLength={300} className="min-h-20 bg-raise text-cream" />
+            <Textarea id="pl-desc" value={description} onChange={(e) => setDescription(e.target.value)} maxLength={300} className="min-h-20" />
           </Field>
           <Button onClick={() => void create()} disabled={busy || !title.trim()}>
             {busy ? <Spinner label="Creating" /> : "Create playlist"}
@@ -184,7 +184,7 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
       <Dialog open={!!renaming} onClose={() => setRenaming(null)} title="Rename playlist">
         <div className="grid gap-4">
           <Field label="Name" htmlFor="pl-rename">
-            <Input id="pl-rename" value={renameValue} onChange={(e) => setRenameValue(e.target.value)} maxLength={80} className="bg-raise text-cream" />
+            <Input id="pl-rename" value={renameValue} onChange={(e) => setRenameValue(e.target.value)} maxLength={80} />
           </Field>
           <Button onClick={() => void rename()} disabled={busy || !renameValue.trim()}>
             {busy ? <Spinner label="Saving" /> : "Save name"}
@@ -194,14 +194,14 @@ export function PlaylistsClient({ initial, isDemo }: { initial: PlaylistRow[]; i
 
       <Dialog open={!!deleting} onClose={() => setDeleting(null)} title="Delete playlist?">
         <div className="grid gap-4">
-          <p className="text-sm text-cream/85">
+          <p className="text-sm text-tx/85">
             “{deleting?.title}” and its track list will be permanently deleted.
           </p>
           <div className="flex gap-3">
             <Button variant="danger" onClick={() => void remove()} disabled={busy}>
               {busy ? <Spinner label="Deleting" /> : "Delete it"}
             </Button>
-            <Button variant="ghost" onClick={() => setDeleting(null)} className="text-cream/70">Keep it</Button>
+            <Button variant="ghost" onClick={() => setDeleting(null)} className="text-tx/70">Keep it</Button>
           </div>
         </div>
       </Dialog>

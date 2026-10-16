@@ -184,7 +184,7 @@ export function ListenClient({
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-bagel text-4xl text-tx">
-            Listen, <span className="text-lime">{userName || "friend"}</span>.
+            Listen, <span className="text-accent">{userName || "friend"}</span>.
           </h1>
           <p className="text-tx2">Ask in English or Pidgin. Every song comes from the catalog.</p>
         </div>
@@ -199,10 +199,10 @@ export function ListenClient({
       {provider.isDemo && (
         <div
           role="note"
-          className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-lime/70 bg-surf px-4 py-3 text-sm text-cream"
+          className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-accent/70 bg-surf px-4 py-3 text-sm text-tx"
         >
           <Sticker color="lime" rotate={-2} className="shrink-0 text-xs">Demo data</Sticker>
-          <span className="text-cream/85">
+          <span className="text-tx/85">
             You are hearing from a fictional sample catalog (MUSIC_PROVIDERS=demo). Track names
             are invented — nothing here is a real release.
           </span>
@@ -211,10 +211,10 @@ export function ListenClient({
       {!provider.configured && (
         <div
           role="note"
-          className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-pink/70 bg-surf px-4 py-3 text-sm text-cream"
+          className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-accent-2/70 bg-surf px-4 py-3 text-sm text-tx"
         >
-          <TriangleAlert size={20} aria-hidden className="shrink-0 text-pink" />
-          <span className="text-cream/85">
+          <TriangleAlert size={20} aria-hidden className="shrink-0 text-accent-2" />
+          <span className="text-tx/85">
             Catalog unavailable (MUSIC_PROVIDERS=none). Muse will answer honestly instead of
             inventing songs.
           </span>
@@ -225,7 +225,7 @@ export function ListenClient({
         {/* Chat surface */}
         <section
           aria-label="Conversation with Muse"
-          className="flex min-h-[62vh] flex-col rounded-[32px] border-2 border-[#2A2D23] bg-deep text-cream shadow-[10px_10px_0_var(--raise)]"
+          className="flex min-h-[62vh] flex-col rounded-[32px] border-2 border-card-line bg-deep text-tx shadow-[10px_10px_0_var(--raise)]"
         >
           <div ref={scroller} className="flex-1 space-y-4 overflow-y-auto p-5 md:p-7" aria-live="polite">
             {loadingSession && (
@@ -235,7 +235,7 @@ export function ListenClient({
             )}
             {!loadingSession && messages.length === 0 && !thinking && (
               <div className="grid gap-5 py-4">
-                <p className="max-w-md font-bagel text-2xl leading-snug text-cream">
+                <p className="max-w-md font-bagel text-2xl leading-snug text-tx">
                   Tell me the mood, the moment or the madness.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -244,7 +244,7 @@ export function ListenClient({
                       key={s}
                       type="button"
                       onClick={() => void send(s)}
-                      className="min-h-11 cursor-pointer rounded-full border-2 border-[#34372C] px-4 py-2 text-left text-sm text-cream/85 transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime"
+                      className="min-h-11 cursor-pointer rounded-full border-2 border-line px-4 py-2 text-left text-sm text-tx/85 transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                     >
                       {s}
                     </button>
@@ -260,7 +260,7 @@ export function ListenClient({
                     "max-w-[90%] rounded-3xl border-2 px-4 py-3 text-[15px] leading-relaxed",
                     m.role === "user"
                       ? "rounded-br-lg border-ink bg-lime text-ink shadow-[3px_3px_0_var(--shadow)]"
-                      : "rounded-bl-lg border-[#34372C] bg-raise text-cream",
+                      : "rounded-bl-lg border-line bg-raise text-tx",
                   )}
                 >
                   {m.content}
@@ -292,7 +292,7 @@ export function ListenClient({
                         key={f}
                         type="button"
                         onClick={() => void send(f)}
-                        className="min-h-11 cursor-pointer rounded-full border-2 border-dashed border-[#4A4D40] px-4 py-1.5 text-xs font-semibold text-cream/75 transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime"
+                        className="min-h-11 cursor-pointer rounded-full border-2 border-dashed border-fieldline px-4 py-1.5 text-xs font-semibold text-tx/75 transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                       >
                         {f}
                       </button>
@@ -303,16 +303,16 @@ export function ListenClient({
             ))}
 
             {thinking && (
-              <div className="flex items-center gap-3 rounded-3xl rounded-bl-lg border-2 border-[#34372C] bg-raise px-4 py-3 text-cream/85 w-fit">
+              <div className="flex items-center gap-3 rounded-3xl rounded-bl-lg border-2 border-line bg-raise px-4 py-3 text-tx/85 w-fit">
                 <Equalizer bars={5} className="h-5" label="Muse is thinking" />
                 <span className="text-sm">Checking the catalog…</span>
               </div>
             )}
 
             {errorMsg && (
-              <div role="alert" className="grid gap-3 rounded-3xl border-2 border-dashed border-pink/70 bg-surf p-4">
-                <p className="text-sm font-semibold text-[#FF8A85]">{errorMsg}</p>
-                <Button variant="outline" className="w-fit text-cream" onClick={() => lastPrompt && void send(lastPrompt)}>
+              <div role="alert" className="grid gap-3 rounded-3xl border-2 border-dashed border-accent-2/70 bg-surf p-4">
+                <p className="text-sm font-semibold text-err">{errorMsg}</p>
+                <Button variant="outline" className="w-fit text-tx" onClick={() => lastPrompt && void send(lastPrompt)}>
                   Retry
                 </Button>
               </div>
@@ -320,8 +320,8 @@ export function ListenClient({
           </div>
 
           {/* Input */}
-          <form onSubmit={submit} className="border-t-2 border-[#2A2D23] p-4">
-            <div className="flex items-center gap-2 rounded-full border-2 border-[#4A4D40] bg-raise p-1.5 pl-5 focus-within:border-lime">
+          <form onSubmit={submit} className="border-t-2 border-card-line p-4">
+            <div className="flex items-center gap-2 rounded-full border-2 border-fieldline bg-raise p-1.5 pl-5 focus-within:border-accent">
               <label htmlFor="listen-input" className="sr-only">
                 Ask Muse for music
               </label>
@@ -331,7 +331,7 @@ export function ListenClient({
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Try: Wetin dey sweet for night?"
                 maxLength={500}
-                className="min-h-11 min-w-0 flex-1 bg-transparent text-cream placeholder:text-dim focus:outline-none"
+                className="min-h-11 min-w-0 flex-1 bg-transparent text-tx placeholder:text-dim focus:outline-none"
               />
               <button
                 type="submit"
@@ -347,9 +347,9 @@ export function ListenClient({
 
         {/* Side rail */}
         <aside className="grid content-start gap-5">
-          <section className="rounded-[28px] border-2 border-[#2A2D23] bg-surf p-5 text-cream" aria-label="Recent conversations">
+          <section className="rounded-[28px] border-2 border-card-line bg-surf p-5 text-tx" aria-label="Recent conversations">
             <h2 className="flex items-center gap-2 font-bagel text-lg">
-              <History size={18} aria-hidden className="text-lime" /> Recent sessions
+              <History size={18} aria-hidden className="text-accent" /> Recent sessions
             </h2>
             {recentSessions.length === 0 ? (
               <p className="mt-3 text-sm text-dim">Nothing yet — your chats will land here.</p>
@@ -359,7 +359,7 @@ export function ListenClient({
                   <li key={s.id}>
                     <Link
                       href={`/listen?session=${s.id}`}
-                      className="block truncate rounded-xl px-2 py-2 text-sm text-cream/80 transition-colors hover:bg-raise hover:text-lime"
+                      className="block truncate rounded-xl px-2 py-2 text-sm text-tx/80 transition-colors hover:bg-raise hover:text-accent"
                     >
                       {s.title}
                     </Link>
@@ -369,9 +369,9 @@ export function ListenClient({
             )}
           </section>
 
-          <section className="rounded-[28px] border-2 border-[#2A2D23] bg-surf p-5 text-cream" aria-label="Your playlists">
+          <section className="rounded-[28px] border-2 border-card-line bg-surf p-5 text-tx" aria-label="Your playlists">
             <h2 className="flex items-center gap-2 font-bagel text-lg">
-              <ListMusic size={18} aria-hidden className="text-lime" /> Playlists
+              <ListMusic size={18} aria-hidden className="text-accent" /> Playlists
             </h2>
             {playlists.length === 0 ? (
               <p className="mt-3 text-sm text-dim">
@@ -383,7 +383,7 @@ export function ListenClient({
                   <li key={p.id}>
                     <Link
                       href={`/playlists/${p.id}`}
-                      className="block truncate rounded-xl px-2 py-2 text-sm text-cream/80 transition-colors hover:bg-raise hover:text-lime"
+                      className="block truncate rounded-xl px-2 py-2 text-sm text-tx/80 transition-colors hover:bg-raise hover:text-accent"
                     >
                       {p.title}
                     </Link>
@@ -391,7 +391,7 @@ export function ListenClient({
                 ))}
               </ul>
             )}
-            <Link href="/playlists" className="mt-3 inline-block text-sm font-semibold text-lime hover:underline">
+            <Link href="/playlists" className="mt-3 inline-block text-sm font-semibold text-accent hover:underline">
               Open Playlists →
             </Link>
           </section>
@@ -402,8 +402,8 @@ export function ListenClient({
       <Dialog open={!!saveTrack} onClose={() => setSaveTrack(null)} title="Save to playlist">
         {saveTrack && (
           <div className="grid gap-4">
-            <p className="text-sm text-cream/80">
-              “<span className="font-semibold text-cream">{saveTrack.title}</span>” — {saveTrack.artist}
+            <p className="text-sm text-tx/80">
+              “<span className="font-semibold text-tx">{saveTrack.title}</span>” — {saveTrack.artist}
             </p>
             {playlists.length > 0 && (
               <div className="grid max-h-56 gap-1.5 overflow-y-auto">
@@ -413,15 +413,15 @@ export function ListenClient({
                     type="button"
                     disabled={saving}
                     onClick={() => void saveToPlaylist(p.id)}
-                    className="flex min-h-11 cursor-pointer items-center justify-between rounded-2xl border-2 border-[#34372C] px-4 text-left text-sm font-semibold text-cream transition-colors hover:border-lime"
+                    className="flex min-h-11 cursor-pointer items-center justify-between rounded-2xl border-2 border-line px-4 text-left text-sm font-semibold text-tx transition-colors hover:border-accent"
                   >
                     {p.title}
                   </button>
                 ))}
               </div>
             )}
-            <div className="border-t-2 border-[#2A2D23] pt-4">
-              <label htmlFor="new-pl" className="text-sm font-semibold text-cream">
+            <div className="border-t-2 border-card-line pt-4">
+              <label htmlFor="new-pl" className="text-sm font-semibold text-tx">
                 Or start a new playlist
               </label>
               <div className="mt-2 flex gap-2">
@@ -430,14 +430,14 @@ export function ListenClient({
                   value={newPlaylistName}
                   onChange={(e) => setNewPlaylistName(e.target.value)}
                   placeholder="e.g. Night drive fuel"
-                  className="min-h-11 min-w-0 flex-1 rounded-2xl border-2 border-[#4A4D40] bg-raise px-4 text-cream placeholder:text-dim"
+                  className="min-h-11 min-w-0 flex-1 rounded-2xl border-2 border-fieldline bg-raise px-4 text-tx placeholder:text-dim"
                 />
                 <Button disabled={saving || newPlaylistName.trim().length === 0} onClick={() => void saveToPlaylist(null)}>
                   {saving ? <Spinner label="Saving" /> : "Create"}
                 </Button>
               </div>
             </div>
-            <Button variant="ghost" onClick={() => setSaveTrack(null)} className="text-cream/70">
+            <Button variant="ghost" onClick={() => setSaveTrack(null)} className="text-tx/70">
               <X size={16} aria-hidden /> Cancel
             </Button>
           </div>

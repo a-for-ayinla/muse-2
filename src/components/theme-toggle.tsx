@@ -45,7 +45,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-pressed={theme === "light"}
       className={
         className ??
-        "grid h-11 w-11 cursor-pointer place-items-center rounded-full border-2 border-fieldline bg-field text-tx transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime"
+        "grid h-11 w-11 cursor-pointer place-items-center rounded-full border-2 border-fieldline bg-field text-tx transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
       }
     >
       {theme === "dark" ? <Sun size={19} aria-hidden /> : <Moon size={19} aria-hidden />}

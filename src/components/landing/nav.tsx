@@ -29,7 +29,7 @@ export function LandingNav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="rounded-lg text-[15px] font-medium text-tx2 transition-colors hover:text-lime"
+                className="rounded-lg text-[15px] font-medium text-tx2 transition-colors hover:text-accent"
               >
                 {l.label}
               </a>

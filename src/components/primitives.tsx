@@ -147,8 +147,8 @@ export function Panel({
       className={cn(
         "rounded-[28px] border-2 p-6",
         deep
-          ? "border-[#2A2D23] bg-deep text-cream shadow-[10px_10px_0_var(--raise)]"
-          : "border-[#2A2D23] bg-surf text-cream",
+          ? "border-card-line bg-deep text-tx shadow-[10px_10px_0_var(--raise)]"
+          : "border-card-line bg-surf text-tx",
         className,
       )}
     >
@@ -270,7 +270,7 @@ export function ModeToggle({
 export function Equalizer({
   bars = 12,
   className,
-  colors = ["#C8FF2E", "#F4EFE4", "#FF6B9A"],
+  colors = ["var(--accent)", "var(--tx)", "var(--accent-2)"],
   label,
 }: {
   bars?: number;
@@ -368,7 +368,7 @@ export function EmptyState({
 }) {
   return (
     <div className="grid place-items-center gap-3 rounded-[28px] border-2 border-dashed border-fieldline px-6 py-14 text-center">
-      {icon && <div className="text-lime">{icon}</div>}
+      {icon && <div className="text-accent">{icon}</div>}
       <p className="font-bagel text-2xl text-tx">{title}</p>
       {body && <p className="max-w-md text-sm text-tx2">{body}</p>}
       {action}
@@ -390,12 +390,12 @@ export function ErrorState({
   return (
     <div
       role="alert"
-      className="grid place-items-center gap-3 rounded-[28px] border-2 border-dashed border-pink/60 bg-deep px-6 py-10 text-center"
+      className="grid place-items-center gap-3 rounded-[28px] border-2 border-dashed border-accent-2/60 bg-deep px-6 py-10 text-center"
     >
-      <p className="font-bagel text-2xl text-pink">{title}</p>
-      {body && <p className="max-w-md text-sm text-cream/80">{body}</p>}
+      <p className="font-bagel text-2xl text-accent-2">{title}</p>
+      {body && <p className="max-w-md text-sm text-tx/80">{body}</p>}
       {onRetry && (
-        <Button variant="outline" onClick={onRetry} className="mt-1 text-cream">
+        <Button variant="outline" onClick={onRetry} className="mt-1">
           {retryLabel}
         </Button>
       )}

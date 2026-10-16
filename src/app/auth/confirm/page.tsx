@@ -20,20 +20,20 @@ export default async function ConfirmPage({
     <AuthShell title="Email confirmation" subtitle="Where confirmation links land." art="record">
       <div className="grid gap-5">
         {status === "ok" ? (
-          <p className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-5 text-cream">
+          <p className="rounded-3xl border-2 border-card-line bg-surf p-5 text-tx">
             Your email is confirmed. You can log in now.
           </p>
         ) : status === "error" ? (
-          <p className="rounded-3xl border-2 border-dashed border-pink/70 bg-deep p-5 text-[#FF8A85]">
+          <p className="rounded-3xl border-2 border-dashed border-accent-2/70 bg-deep p-5 text-err">
             That confirmation link is invalid or expired. Sign up again or request a new one.
           </p>
         ) : token ? (
-          <p className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-5 text-sm text-cream/85">
+          <p className="rounded-3xl border-2 border-card-line bg-surf p-5 text-sm text-tx/85">
             Tokens are only issued when email delivery is configured. In this environment no
             confirmation email is required — your account was activated at signup.
           </p>
         ) : (
-          <p className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-5 text-sm leading-relaxed text-cream/85">
+          <p className="rounded-3xl border-2 border-card-line bg-surf p-5 text-sm leading-relaxed text-tx/85">
             Email delivery isn&rsquo;t configured in this environment, so accounts are active the
             moment you sign up. No confirmation email is sent or required.
           </p>

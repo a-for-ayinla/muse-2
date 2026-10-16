@@ -41,7 +41,7 @@ export function AuthShell({
           <Equalizer bars={28} className="h-64" />
         )}
         <div className="absolute bottom-10 left-0 right-0 text-center">
-          <p className="font-bagel text-xl text-cream/70">your sound. your culture. your ai.</p>
+          <p className="font-bagel text-xl text-tx/70">your sound. your culture. your ai.</p>
         </div>
       </div>
     </div>
