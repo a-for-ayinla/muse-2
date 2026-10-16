@@ -62,10 +62,10 @@ export function OnboardingGate({ user }: { user: ShellUser }) {
         role="dialog"
         aria-modal="true"
         aria-label="Welcome to Muse — set up your profile"
-        className="my-8 w-full max-w-2xl rounded-[32px] border-2 border-[#2A2D23] bg-surf p-6 text-cream shadow-[10px_10px_0_var(--raise)] anim-rise md:p-9"
+        className="my-8 w-full max-w-2xl rounded-[32px] border-2 border-card-line bg-surf p-6 text-tx shadow-[10px_10px_0_var(--raise)] anim-rise md:p-9"
       >
         <p className="font-bagel text-3xl">
-          First things first, <span className="text-lime">{user.displayName || "friend"}</span>.
+          First things first, <span className="text-accent">{user.displayName || "friend"}</span>.
         </p>
         <p className="mt-2 text-sm text-muted">
           Thirty seconds so Muse understands your ear. Everything is editable later in Settings.

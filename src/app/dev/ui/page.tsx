@@ -9,7 +9,6 @@ import {
   Field,
   Input,
   Logo,
-  ModeToggle,
   Panel,
   Record,
   Select,
@@ -40,7 +39,7 @@ export default function DevUiPage() {
       </header>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Logo</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Logo</h2>
         <div className="flex flex-wrap items-center gap-6">
           <Logo size={40} />
           <Logo variant="mark" size={56} />
@@ -48,7 +47,7 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Buttons</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Buttons</h2>
         <div className="flex flex-wrap items-center gap-4">
           <Button>Primary</Button>
           <Button variant="outline">Outline</Button>
@@ -61,7 +60,7 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Chips & stickers</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Chips & stickers</h2>
         <div className="flex flex-wrap items-center gap-3">
           <Chip>Idle chip</Chip>
           <Chip active>Active chip</Chip>
@@ -72,7 +71,7 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Fields</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Fields</h2>
         <div className="grid max-w-lg gap-4">
           <Field label="Text input" htmlFor="dev-i" hint="With a hint.">
             <Input id="dev-i" placeholder="Type something…" />
@@ -93,7 +92,7 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Panels</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Panels</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <Panel>Standard panel — surfaces are intentional, not default.</Panel>
           <Panel deep>Deep panel with raised hard shadow.</Panel>
@@ -101,7 +100,7 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Media & motion</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Media & motion</h2>
         <div className="flex flex-wrap items-center gap-10">
           <Record size={200} />
           <Equalizer bars={14} />
@@ -110,7 +109,7 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">Track card</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">Track card</h2>
         <div className="grid max-w-2xl gap-3">
           <TrackCard
             track={{ id: "00000000-0000-0000-0000-000000000001", title: "Third Mainland Hours", artist: "Sample Artist", genres: ["Afro-soul", "Smooth"], externalUrl: null }}
@@ -124,14 +123,11 @@ export default function DevUiPage() {
       </section>
 
       <section>
-        <h2 className="mb-4 font-bagel text-2xl text-lime">States</h2>
+        <h2 className="mb-4 font-bagel text-2xl text-accent">States</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <Skeleton className="h-32" />
           <EmptyState title="Nothing here yet" body="Empty states stay helpful and honest." />
           <ErrorState body="Error states offer a way back." />
-          <Panel>
-            <ModeToggle value="listen" onChange={() => {}} />
-          </Panel>
         </div>
       </section>
 

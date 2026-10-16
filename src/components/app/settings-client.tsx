@@ -115,27 +115,27 @@ export function SettingsClient({ user }: { user: User }) {
       </div>
 
       {/* Profile + preferences */}
-      <form onSubmit={save} className="grid gap-5 rounded-[32px] border-2 border-[#2A2D23] bg-surf p-6 text-cream shadow-[8px_8px_0_var(--raise)] md:p-8">
+      <form onSubmit={save} className="grid gap-5 rounded-[32px] border-2 border-card-line bg-surf p-6 text-tx shadow-[8px_8px_0_var(--raise)] md:p-8">
         <h2 className="font-bagel text-2xl">Profile & preferences</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <Field label="Display name" htmlFor="set-name">
-            <Input id="set-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={60} className="bg-raise text-cream" />
+            <Input id="set-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={60} />
           </Field>
           <Field label="You mostly use Muse as" htmlFor="set-role">
-            <Select id="set-role" value={role} onChange={(e) => setRole(e.target.value)} className="bg-raise text-cream">
+            <Select id="set-role" value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="listener">Listener</option>
               <option value="creator">Creator / artist</option>
             </Select>
           </Field>
           <Field label="Preferred language" htmlFor="set-lang">
-            <Select id="set-lang" value={language} onChange={(e) => setLanguage(e.target.value)} className="bg-raise text-cream">
+            <Select id="set-lang" value={language} onChange={(e) => setLanguage(e.target.value)}>
               {brand.languages.map((l) => (
                 <option key={l} value={l}>{l}</option>
               ))}
             </Select>
           </Field>
           <Field label="Where you press play" htmlFor="set-platform">
-            <Select id="set-platform" value={platform} onChange={(e) => setPlatform(e.target.value)} className="bg-raise text-cream">
+            <Select id="set-platform" value={platform} onChange={(e) => setPlatform(e.target.value)}>
               {brand.platforms.map((p) => (
                 <option key={p.id} value={p.id}>{p.label}</option>
               ))}
@@ -166,7 +166,7 @@ export function SettingsClient({ user }: { user: User }) {
       </form>
 
       {/* Appearance */}
-      <section className="flex flex-wrap items-center justify-between gap-4 rounded-[32px] border-2 border-[#2A2D23] bg-surf p-6 text-cream md:p-8" aria-label="Appearance">
+      <section className="flex flex-wrap items-center justify-between gap-4 rounded-[32px] border-2 border-card-line bg-surf p-6 text-tx md:p-8" aria-label="Appearance">
         <div>
           <h2 className="font-bagel text-2xl">Appearance</h2>
           <p className="mt-1 text-sm text-muted">Dark is the Muse default; your choice is remembered on this device.</p>
@@ -175,11 +175,11 @@ export function SettingsClient({ user }: { user: User }) {
       </section>
 
       {/* Privacy */}
-      <section className="grid gap-3 rounded-[32px] border-2 border-[#2A2D23] bg-deep p-6 text-cream shadow-[10px_10px_0_var(--raise)] md:p-8" aria-label="Privacy and data">
+      <section className="grid gap-3 rounded-[32px] border-2 border-card-line bg-deep p-6 text-tx shadow-[10px_10px_0_var(--raise)] md:p-8" aria-label="Privacy and data">
         <h2 className="flex items-center gap-2 font-bagel text-2xl">
-          <ShieldCheck size={22} aria-hidden className="text-lime" /> Privacy & data
+          <ShieldCheck size={22} aria-hidden className="text-accent" /> Privacy & data
         </h2>
-        <p className="text-sm leading-relaxed text-cream/85">
+        <p className="text-sm leading-relaxed text-tx/85">
           Playlists are private by default; nothing is visible to anyone else unless you mark a
           playlist public. Conversations are kept only until you delete them — one by one in
           History, or all at once here. Your like / not-for-me feedback shapes recommendations and
@@ -187,15 +187,15 @@ export function SettingsClient({ user }: { user: User }) {
           and permanently.
         </p>
         <div className="mt-2 flex flex-wrap gap-3">
-          <Button variant="outline" className="text-cream" onClick={() => setConfirmChats(true)}>
+          <Button variant="outline" onClick={() => setConfirmChats(true)}>
             <Trash2 size={16} aria-hidden /> Delete all conversations
           </Button>
         </div>
       </section>
 
       {/* Danger zone */}
-      <section className="grid gap-3 rounded-[32px] border-2 border-dashed border-pink/60 p-6 md:p-8" aria-label="Danger zone">
-        <h2 className="font-bagel text-2xl text-pink">Danger zone</h2>
+      <section className="grid gap-3 rounded-[32px] border-2 border-dashed border-accent-2/60 p-6 md:p-8" aria-label="Danger zone">
+        <h2 className="font-bagel text-2xl text-accent-2">Danger zone</h2>
         <p className="text-sm text-tx2">
           Deleting your account removes your profile, sessions, playlists, feedback and creator
           plans. It cannot be undone.
@@ -212,19 +212,19 @@ export function SettingsClient({ user }: { user: User }) {
 
       <Dialog open={confirmChats} onClose={() => setConfirmChats(false)} title="Delete all conversations?">
         <div className="grid gap-4">
-          <p className="text-sm text-cream/85">Every conversation in your history goes away, permanently.</p>
+          <p className="text-sm text-tx/85">Every conversation in your history goes away, permanently.</p>
           <div className="flex gap-3">
             <Button variant="danger" onClick={() => void deleteConversations()} disabled={busy}>
               {busy ? <Spinner label="Deleting" /> : "Delete everything"}
             </Button>
-            <Button variant="ghost" onClick={() => setConfirmChats(false)} className="text-cream/70">Keep them</Button>
+            <Button variant="ghost" onClick={() => setConfirmChats(false)} className="text-tx/70">Keep them</Button>
           </div>
         </div>
       </Dialog>
 
       <Dialog open={confirmAccount} onClose={() => { setConfirmAccount(false); setPassword(""); }} title="Delete your account?">
         <div className="grid gap-4">
-          <p className="text-sm text-cream/85">
+          <p className="text-sm text-tx/85">
             This is permanent. Enter your password to confirm.
           </p>
           <Field label="Password" htmlFor="confirm-delete-pw">
@@ -234,14 +234,13 @@ export function SettingsClient({ user }: { user: User }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
-              className="bg-raise text-cream"
             />
           </Field>
           <div className="flex gap-3">
             <Button variant="danger" onClick={() => void deleteAccount()} disabled={busy || password.length === 0}>
               {busy ? <Spinner label="Deleting account" /> : "Delete my account"}
             </Button>
-            <Button variant="ghost" onClick={() => { setConfirmAccount(false); setPassword(""); }} className="text-cream/70">
+            <Button variant="ghost" onClick={() => { setConfirmAccount(false); setPassword(""); }} className="text-tx/70">
               Keep my account
             </Button>
           </div>

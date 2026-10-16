@@ -2,7 +2,10 @@
 
 /* ============================================================
    MUSE design tokens — Lagos night-market. LOCKED palette.
-   Dark is default; light reassigns the same tokens semantically.
+   Dark is default; light reassigns the same tokens semantically
+   so every surface, border and text role flips together. The
+   brand *accent* values (ink, lime, hibiscus) never move — only
+   the semantic roles around them do.
    ============================================================ */
 :root,
 [data-theme="dark"] {
@@ -15,29 +18,45 @@
   --deep: #16180f;
   --raise: #23261f;
   --line: #34372c;
+  --card-line: #2a2d23;
+  --inner-line: #1a1c17;
   --shadow: #f4efe4;
   --field: #23261f;
   --field-line: #4a4d40;
   --err: #ff8a85;
   --ok: #45e3a0;
   --on-accent: #0e0f0c;
+  /* text & ink accents that sit on surfaces (see @theme below) */
+  --accent: #c8ff2e;
+  --accent-2: #ff6b9a;
+  --muted: #b4b6a6;
+  --dim: #8e9081;
+  --focus: #c8ff2e;
 }
 [data-theme="light"] {
   color-scheme: light;
   --bg: #f4efe4;
   --tx: #0e0f0c;
-  --tx2: #34372c;
-  --ph: #4a4d40;
-  --surf: #1a1c17;
-  --deep: #16180f;
-  --raise: #23261f;
-  --line: #c9cbbb;
+  --tx2: #3f4237;
+  --ph: #7c8070;
+  --surf: #fffdf8;
+  --deep: #ece5d5;
+  --raise: #e2dbc7;
+  --line: #cdc8b6;
+  --card-line: #c4bfab;
+  --inner-line: #e6e1d0;
   --shadow: #0e0f0c;
-  --field: #f4efe4;
-  --field-line: #0e0f0c;
+  --field: #ffffff;
+  --field-line: #8e9081;
   --err: #b3271e;
   --ok: #0f7b4d;
   --on-accent: #0e0f0c;
+  /* lime and hibiscus read as text/ink only when deepened */
+  --accent: #4f6b0d;
+  --accent-2: #c2185b;
+  --muted: #5f6455;
+  --dim: #6b7060;
+  --focus: #4f6b0d;
 }
 
 @theme inline {
@@ -49,19 +68,26 @@
   --color-deep: var(--deep);
   --color-raise: var(--raise);
   --color-line: var(--line);
+  --color-card-line: var(--card-line);
+  --color-inner-line: var(--inner-line);
   --color-shadowc: var(--shadow);
   --color-field: var(--field);
   --color-fieldline: var(--field-line);
   --color-err: var(--err);
   --color-ok: var(--ok);
+  /* Ink, cream and the accents are brand constants: they never flip. */
   --color-ink: #0e0f0c;
   --color-panel: #1a1c17;
   --color-cream: #f4efe4;
   --color-soft: #c9cbbb;
-  --color-muted: #b4b6a6;
-  --color-dim: #8e9081;
   --color-lime: #c8ff2e;
   --color-pink: #ff6b9a;
+  /* …except when they are used as *text* on a surface, where the light
+     theme needs the deepened equivalent to stay legible. */
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
   --font-bagel: var(--font-bagel-var), "ui-rounded", system-ui, sans-serif;
   --font-fredoka: var(--font-fredoka-var), "ui-rounded", system-ui, sans-serif;
 }
@@ -115,7 +141,7 @@ body {
 
 /* ------- Accessible focus ------- */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
-  outline: 3px solid #c8ff2e;
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
   border-radius: 6px;
 }

@@ -24,7 +24,7 @@ export function Hero() {
           style={{ fontSize: "clamp(54px, 9.2vw, 118px)" }}
         >
           <span className="anim-rise block text-tx">Your sound.</span>
-          <span className="anim-rise block text-lime" style={{ animationDelay: "0.12s" }}>
+          <span className="anim-rise block text-accent" style={{ animationDelay: "0.12s" }}>
             Your <span className="wavy">culture.</span>
           </span>
           <span className="anim-rise mt-1 flex items-center gap-4 text-tx" style={{ animationDelay: "0.24s" }}>
@@ -41,7 +41,7 @@ export function Hero() {
 
         {/* Ask bar */}
         <form
-          className="anim-rise mt-8 flex max-w-xl items-center gap-2 rounded-full border-2 border-[#4A4D40] bg-surf p-2 pl-6 shadow-[6px_6px_0_#C8FF2E]"
+          className="anim-rise mt-8 flex max-w-xl items-center gap-2 rounded-full border-2 border-fieldline bg-surf p-2 pl-6 shadow-[6px_6px_0_#C8FF2E]"
           style={{ animationDelay: "0.44s" }}
           action="/signup"
         >
@@ -53,7 +53,7 @@ export function Hero() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Smooth songs for a night drive..."
-            className="min-h-11 min-w-0 flex-1 bg-transparent text-base text-cream placeholder:text-dim focus:outline-none"
+            className="min-h-11 min-w-0 flex-1 bg-transparent text-base text-tx placeholder:text-dim focus:outline-none"
           />
           <Link
             href={{ pathname: "/signup", query: query ? { q: query } : {} }}
@@ -68,7 +68,7 @@ export function Hero() {
               key={c}
               type="button"
               onClick={() => setQuery(c)}
-              className="min-h-11 cursor-pointer rounded-full border-2 border-fieldline px-4 py-1.5 text-sm text-tx2 transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime"
+              className="min-h-11 cursor-pointer rounded-full border-2 border-fieldline px-4 py-1.5 text-sm text-tx2 transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
             >
               {c}
             </button>

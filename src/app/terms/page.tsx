@@ -37,15 +37,15 @@ export default function TermsPage() {
       <p className="mt-3 text-tx2">The rules of the road for using Muse.</p>
       <div className="mt-10 grid gap-6">
         {SECTIONS.map((s) => (
-          <section key={s.h} className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-6 text-cream">
-            <h2 className="font-bagel text-2xl text-lime">{s.h}</h2>
-            <p className="mt-2 leading-relaxed text-cream/85">{s.p}</p>
+          <section key={s.h} className="rounded-3xl border-2 border-card-line bg-surf p-6 text-tx">
+            <h2 className="font-bagel text-2xl text-accent">{s.h}</h2>
+            <p className="mt-2 leading-relaxed text-tx/85">{s.p}</p>
           </section>
         ))}
       </div>
       <p className="mt-10 text-sm text-tx2">
         Also read{" "}
-        <Link href="/privacy" className="font-semibold text-lime hover:underline">
+        <Link href="/privacy" className="font-semibold text-accent hover:underline">
           Privacy
         </Link>{" "}
         for how your data is handled.

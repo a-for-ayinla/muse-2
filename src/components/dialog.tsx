@@ -77,17 +77,17 @@ export function Dialog({
         aria-modal="true"
         aria-label={title}
         className={cn(
-          "relative w-full max-w-lg rounded-[28px] border-2 border-[#2A2D23] bg-surf p-6 text-cream shadow-[8px_8px_0_var(--raise)] anim-rise",
+          "relative w-full max-w-lg rounded-[28px] border-2 border-card-line bg-surf p-6 text-tx shadow-[8px_8px_0_var(--raise)] anim-rise",
           className,
         )}
       >
         <div className="mb-4 flex items-center justify-between gap-4">
-          <h2 className="font-bagel text-2xl text-cream">{title}</h2>
+          <h2 className="font-bagel text-2xl text-tx">{title}</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border-2 border-[#34372C] text-cream/80 transition-colors hover:border-lime hover:text-lime"
+            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border-2 border-line text-tx/80 transition-colors hover:border-accent hover:text-accent"
           >
             <X size={20} aria-hidden />
           </button>

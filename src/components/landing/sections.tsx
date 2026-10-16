@@ -37,7 +37,7 @@ function ChatBubble({ from, children }: { from: "user" | "muse"; children: React
         "max-w-[92%] rounded-3xl border-2 px-4 py-3 text-[15px] leading-relaxed",
         from === "user"
           ? "ml-auto rounded-br-lg border-ink bg-lime text-ink shadow-[3px_3px_0_var(--shadow)]"
-          : "rounded-bl-lg border-[#34372C] bg-raise text-cream",
+          : "rounded-bl-lg border-line bg-raise text-tx",
       )}
     >
       {children}
@@ -77,11 +77,11 @@ function ListenDemo() {
         {SAMPLE_TRACKS.map((t, i) => (
           <div
             key={t.title}
-            className="flex items-center gap-3 rounded-2xl border-2 border-[#2A2D23] bg-surf p-2.5"
+            className="flex items-center gap-3 rounded-2xl border-2 border-card-line bg-surf p-2.5"
           >
             <ArtTile title={t.title} size={48} />
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold text-cream">{t.title}</p>
+              <p className="truncate text-sm font-semibold text-tx">{t.title}</p>
               <p className="text-xs text-dim">Artist name</p>
             </div>
             <button
@@ -91,10 +91,10 @@ function ListenDemo() {
               onClick={() => setHearts((h) => ({ ...h, [i]: !h[i] }))}
               className={cn(
                 "grid h-11 w-11 cursor-pointer place-items-center rounded-full transition-colors hover:bg-raise",
-                hearts[i] ? "text-pink" : "text-muted hover:text-pink",
+                hearts[i] ? "text-accent-2" : "text-muted hover:text-accent-2",
               )}
             >
-              <Heart size={19} aria-hidden className={cn(hearts[i] && "fill-pink anim-pop")} />
+              <Heart size={19} aria-hidden className={cn(hearts[i] && "fill-accent-2 anim-pop")} />
             </button>
           </div>
         ))}
@@ -106,7 +106,7 @@ function ListenDemo() {
             "mt-1 min-h-11 cursor-pointer rounded-full border-2 font-semibold transition-all",
             saved
               ? "border-ink bg-lime text-ink shadow-[4px_4px_0_var(--shadow)]"
-              : "border-cream/40 text-cream hover:-translate-y-0.5 hover:border-lime hover:text-lime",
+              : "border-tx/40 text-tx hover:-translate-y-0.5 hover:border-accent hover:text-accent",
           )}
         >
           {saved ? "✓ Saved to Playlists" : "Save as playlist"}
@@ -144,25 +144,25 @@ function CreateDemo() {
         </p>
       </div>
       <div className="grid content-start gap-4">
-        <div className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-4">
-          <p className="mb-2 font-bagel text-lg text-lime">Positioning suggestion</p>
-          <dl className="grid gap-2 text-sm text-cream/90">
+        <div className="rounded-3xl border-2 border-card-line bg-surf p-4">
+          <p className="mb-2 font-bagel text-lg text-accent">Positioning suggestion</p>
+          <dl className="grid gap-2 text-sm text-tx/90">
             <div>
-              <dt className="inline font-semibold text-cream">Sound: </dt>
+              <dt className="inline font-semibold text-tx">Sound: </dt>
               <dd className="inline">late-night Afrobeats with alté textures.</dd>
             </div>
             <div>
-              <dt className="inline font-semibold text-cream">Audience: </dt>
+              <dt className="inline font-semibold text-tx">Audience: </dt>
               <dd className="inline">city twenty-somethings who find music after midnight.</dd>
             </div>
             <div>
-              <dt className="inline font-semibold text-cream">Angle: </dt>
+              <dt className="inline font-semibold text-tx">Angle: </dt>
               <dd className="inline">the voice of the ride home after the party.</dd>
             </div>
           </dl>
         </div>
-        <div className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-4">
-          <p className="mb-2 font-bagel text-lg text-lime">Release checklist, draft</p>
+        <div className="rounded-3xl border-2 border-card-line bg-surf p-4">
+          <p className="mb-2 font-bagel text-lg text-accent">Release checklist, draft</p>
           <ul className="grid gap-1.5">
             {CHECKLIST.map((c, i) => (
               <li key={c}>
@@ -170,7 +170,7 @@ function CreateDemo() {
                   type="button"
                   aria-pressed={!!ticks[i]}
                   onClick={() => setTicks((t) => ({ ...t, [i]: !t[i] }))}
-                  className="flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-xl px-2 text-left text-sm text-cream/90 transition-colors hover:bg-raise"
+                  className="flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-xl px-2 text-left text-sm text-tx/90 transition-colors hover:bg-raise"
                 >
                   <span
                     className={cn(
@@ -195,7 +195,7 @@ export function TwoModes() {
   const [mode, setMode] = useState<"listen" | "create">("listen");
   return (
     <section className="mx-auto max-w-[1240px] px-7 py-20" id="listen">
-      <p className="text-center font-semibold uppercase tracking-[0.25em] text-lime">
+      <p className="text-center font-semibold uppercase tracking-[0.25em] text-accent">
         Two modes, one Muse
       </p>
       <h2 className="mt-3 text-center font-bagel text-5xl text-tx md:text-6xl">
@@ -204,7 +204,7 @@ export function TwoModes() {
       <div className="mt-8 flex justify-center" id="create">
         <ModeToggle value={mode} onChange={setMode} label="Landing demo mode" />
       </div>
-      <div className="mt-10 rounded-[32px] border-2 border-[#2A2D23] bg-deep p-6 text-cream shadow-[10px_10px_0_var(--raise)] md:p-10">
+      <div className="mt-10 rounded-[32px] border-2 border-card-line bg-deep p-6 text-tx shadow-[10px_10px_0_var(--raise)] md:p-10">
         {mode === "listen" ? <ListenDemo /> : <CreateDemo />}
       </div>
     </section>
@@ -229,7 +229,7 @@ export function HowItWorks() {
         {STEPS.map((s) => (
           <div
             key={s.n}
-            className="rounded-[28px] border-2 border-[#2A2D23] bg-surf p-7 text-cream shadow-[8px_8px_0_var(--raise)] transition-transform hover:-translate-y-1"
+            className="rounded-[28px] border-2 border-card-line bg-surf p-7 text-tx shadow-[8px_8px_0_var(--raise)] transition-transform hover:-translate-y-1"
           >
             <span className="grid h-12 w-12 place-items-center rounded-full border-[3px] border-ink bg-lime font-bagel text-2xl text-ink">
               {s.n}
@@ -268,7 +268,7 @@ export function WhyMuse() {
             {PIDGIN_PILLS.map((p, i) => (
               <span
                 key={p}
-                className="rounded-full border-2 border-dashed border-lime/70 px-4 py-2 text-sm font-medium text-tx"
+                className="rounded-full border-2 border-dashed border-accent/70 px-4 py-2 text-sm font-medium text-tx"
                 style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1.5}deg)` }}
               >
                 {p}
@@ -280,7 +280,7 @@ export function WhyMuse() {
           {CHECKS.map((c) => (
             <li
               key={c.title}
-              className="flex items-start gap-4 rounded-3xl border-2 border-[#2A2D23] bg-surf p-5 text-cream"
+              className="flex items-start gap-4 rounded-3xl border-2 border-card-line bg-surf p-5 text-tx"
             >
               <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border-[3px] border-ink bg-lime text-ink">
                 <Check size={18} strokeWidth={3.5} aria-hidden />
@@ -344,12 +344,12 @@ export function LandingFooter() {
           <Logo size={36} />
         </Link>
         <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-tx2">
-          <a href="#listen" className="rounded hover:text-lime">Listen</a>
-          <a href="#create" className="rounded hover:text-lime">Create</a>
-          <a href="#how" className="rounded hover:text-lime">How it works</a>
-          <a href="#why" className="rounded hover:text-lime">Why Muse</a>
-          <Link href="/privacy" className="rounded hover:text-lime">Privacy</Link>
-          <Link href="/terms" className="rounded hover:text-lime">Terms</Link>
+          <a href="#listen" className="rounded hover:text-accent">Listen</a>
+          <a href="#create" className="rounded hover:text-accent">Create</a>
+          <a href="#how" className="rounded hover:text-accent">How it works</a>
+          <a href="#why" className="rounded hover:text-accent">Why Muse</a>
+          <Link href="/privacy" className="rounded hover:text-accent">Privacy</Link>
+          <Link href="/terms" className="rounded hover:text-accent">Terms</Link>
         </nav>
         <div className="flex gap-2">
           <Chip onClick={() => window.scrollTo({ top: 0 })}>Back up ↑</Chip>

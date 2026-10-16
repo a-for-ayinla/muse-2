@@ -99,7 +99,7 @@ export function AppShell({ user, children }: { user: ShellUser; children: ReactN
                 aria-haspopup="menu"
                 aria-label="Account menu"
                 onClick={() => setMenuOpen((o) => !o)}
-                className="flex cursor-pointer items-center gap-2 rounded-full border-2 border-fieldline bg-field py-1.5 pl-1.5 pr-3 transition-colors hover:border-lime"
+                className="flex cursor-pointer items-center gap-2 rounded-full border-2 border-fieldline bg-field py-1.5 pl-1.5 pr-3 transition-colors hover:border-accent"
               >
                 <span className="grid h-8 w-8 place-items-center rounded-full border-2 border-ink bg-lime font-bagel text-sm text-ink">
                   {initials(user.displayName, user.email)}
@@ -109,7 +109,7 @@ export function AppShell({ user, children }: { user: ShellUser; children: ReactN
               {menuOpen && (
                 <div
                   role="menu"
-                  className="absolute bottom-14 right-0 w-60 rounded-3xl border-2 border-[#2A2D23] bg-surf p-3 text-cream shadow-[6px_6px_0_var(--raise)]"
+                  className="absolute bottom-14 right-0 w-60 rounded-3xl border-2 border-card-line bg-surf p-3 text-tx shadow-[6px_6px_0_var(--raise)]"
                 >
                   <p className="truncate px-3 pb-1 pt-2 font-semibold">{user.displayName || "Muse user"}</p>
                   <p className="truncate px-3 pb-2 text-xs text-dim">{user.email}</p>
@@ -125,7 +125,7 @@ export function AppShell({ user, children }: { user: ShellUser; children: ReactN
                     type="button"
                     role="menuitem"
                     onClick={logout}
-                    className="flex min-h-11 w-full cursor-pointer items-center gap-2 rounded-2xl px-3 text-left text-sm font-semibold text-[#FF8A85] hover:bg-raise"
+                    className="flex min-h-11 w-full cursor-pointer items-center gap-2 rounded-2xl px-3 text-left text-sm font-semibold text-err hover:bg-raise"
                   >
                     <LogOut size={17} aria-hidden /> Log out
                   </button>
@@ -147,7 +147,7 @@ export function AppShell({ user, children }: { user: ShellUser; children: ReactN
             type="button"
             onClick={logout}
             aria-label="Log out"
-            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border-2 border-fieldline text-tx2 transition-colors hover:text-lime"
+            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border-2 border-fieldline text-tx2 transition-colors hover:text-accent"
           >
             <LogOut size={18} aria-hidden />
           </button>
@@ -173,7 +173,7 @@ export function AppShell({ user, children }: { user: ShellUser; children: ReactN
                 aria-label={t.label}
                 className={cn(
                   "flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl text-[10px] font-semibold transition-colors",
-                  isActive(t.href) ? "text-lime" : "text-tx2 hover:text-tx",
+                  isActive(t.href) ? "text-accent" : "text-tx2 hover:text-tx",
                 )}
               >
                 <t.icon size={21} aria-hidden />

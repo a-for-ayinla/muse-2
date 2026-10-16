@@ -118,7 +118,7 @@ export function PlaylistDetailClient({
 
   return (
     <div className="grid gap-6">
-      <Link href="/playlists" className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-tx2 hover:text-lime">
+      <Link href="/playlists" className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-tx2 hover:text-accent">
         <ArrowLeft size={16} aria-hidden /> All playlists
       </Link>
 
@@ -128,7 +128,7 @@ export function PlaylistDetailClient({
           <p className="mt-1 flex items-center gap-2 text-sm text-tx2">
             {tracks.length} {tracks.length === 1 ? "track" : "tracks"} ·{" "}
             {meta.visibility === "public" ? (
-              <span className="inline-flex items-center gap-1 text-lime"><Globe2 size={13} aria-hidden /> public</span>
+              <span className="inline-flex items-center gap-1 text-accent"><Globe2 size={13} aria-hidden /> public</span>
             ) : (
               <span className="inline-flex items-center gap-1"><Lock size={13} aria-hidden /> private</span>
             )}
@@ -143,14 +143,14 @@ export function PlaylistDetailClient({
       </div>
 
       {isDemo && (
-        <p role="note" className="rounded-2xl border-2 border-dashed border-lime/70 bg-surf px-4 py-3 text-sm text-cream/85">
+        <p role="note" className="rounded-2xl border-2 border-dashed border-accent/70 bg-surf px-4 py-3 text-sm text-tx/85">
           Demo data is on — these tracks are fictional. The open button searches your platform for the (invented) title.
         </p>
       )}
 
       {tracks.length === 0 ? (
         <div className="grid place-items-center gap-3 rounded-[28px] border-2 border-dashed border-fieldline px-6 py-16 text-center">
-          <Music2 size={36} aria-hidden className="text-lime" />
+          <Music2 size={36} aria-hidden className="text-accent" />
           <p className="font-bagel text-2xl text-tx">Empty playlist</p>
           <p className="max-w-md text-sm text-tx2">
             Head to Listen, ask for a vibe, and save tracks here with the plus button.
@@ -189,7 +189,7 @@ export function PlaylistDetailClient({
                         aria-label={`Move “${t.title}” up`}
                         disabled={busy || i === 0}
                         onClick={() => move(t.id, -1)}
-                        className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg text-muted transition-colors hover:bg-raise hover:text-lime disabled:opacity-30"
+                        className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg text-muted transition-colors hover:bg-raise hover:text-accent disabled:opacity-30"
                       >
                         <ChevronUp size={16} aria-hidden />
                       </button>
@@ -198,7 +198,7 @@ export function PlaylistDetailClient({
                         aria-label={`Move “${t.title}” down`}
                         disabled={busy || i === tracks.length - 1}
                         onClick={() => move(t.id, 1)}
-                        className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg text-muted transition-colors hover:bg-raise hover:text-lime disabled:opacity-30"
+                        className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg text-muted transition-colors hover:bg-raise hover:text-accent disabled:opacity-30"
                       >
                         <ChevronDown size={16} aria-hidden />
                       </button>
@@ -214,10 +214,10 @@ export function PlaylistDetailClient({
       <Dialog open={editOpen} onClose={() => setEditOpen(false)} title="Edit playlist">
         <div className="grid gap-5">
           <Field label="Name" htmlFor="edit-pl-title">
-            <Input id="edit-pl-title" value={title} onChange={(e) => setTitle(e.target.value)} maxLength={80} className="bg-raise text-cream" />
+            <Input id="edit-pl-title" value={title} onChange={(e) => setTitle(e.target.value)} maxLength={80} />
           </Field>
           <div className="grid gap-1.5">
-            <span className="text-sm font-semibold text-cream">Visibility</span>
+            <span className="text-sm font-semibold text-tx">Visibility</span>
             <div className="flex gap-2">
               <button
                 type="button"
@@ -225,7 +225,7 @@ export function PlaylistDetailClient({
                 onClick={() => void saveMeta("private")}
                 className={cn(
                   "min-h-11 cursor-pointer rounded-full border-2 px-4 text-sm font-semibold",
-                  meta.visibility !== "public" ? "border-ink bg-lime text-ink" : "border-[#4A4D40] text-cream/80",
+                  meta.visibility !== "public" ? "border-ink bg-lime text-ink" : "border-fieldline text-tx/80",
                 )}
               >
                 <Lock size={14} aria-hidden className="mr-1 inline" /> Private
@@ -236,7 +236,7 @@ export function PlaylistDetailClient({
                 onClick={() => void saveMeta("public")}
                 className={cn(
                   "min-h-11 cursor-pointer rounded-full border-2 px-4 text-sm font-semibold",
-                  meta.visibility === "public" ? "border-ink bg-lime text-ink" : "border-[#4A4D40] text-cream/80",
+                  meta.visibility === "public" ? "border-ink bg-lime text-ink" : "border-fieldline text-tx/80",
                 )}
               >
                 <Globe2 size={14} aria-hidden className="mr-1 inline" /> Public

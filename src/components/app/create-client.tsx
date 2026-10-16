@@ -233,7 +233,7 @@ export function CreateClient({
     if (!items.length) return null;
     return (
       <div>
-        <p className="font-bagel text-lg text-lime">{title}</p>
+        <p className="font-bagel text-lg text-accent">{title}</p>
         <ul className="mt-2 grid gap-1">
           {items.map((i) => (
             <li key={i.id}>
@@ -242,7 +242,7 @@ export function CreateClient({
                 aria-pressed={i.done}
                 disabled={busy}
                 onClick={() => void toggleItem(section, i.id)}
-                className="flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-xl px-2 text-left text-sm text-cream/90 transition-colors hover:bg-raise"
+                className="flex min-h-11 w-full cursor-pointer items-center gap-3 rounded-xl px-2 text-left text-sm text-tx/90 transition-colors hover:bg-raise"
               >
                 <span
                   className={cn(
@@ -276,28 +276,28 @@ export function CreateClient({
       </div>
 
       {provider.isDemo && (
-        <div role="note" className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-lime/70 bg-surf px-4 py-3 text-sm text-cream">
+        <div role="note" className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-accent/70 bg-surf px-4 py-3 text-sm text-tx">
           <Sticker color="lime" rotate={-2} className="shrink-0 text-xs">Demo data</Sticker>
-          <span className="text-cream/85">Similar artists come from a fictional sample catalog.</span>
+          <span className="text-tx/85">Similar artists come from a fictional sample catalog.</span>
         </div>
       )}
 
       {/* ---- Profile editor ---- */}
-      <form onSubmit={saveProfile} className="grid gap-5 rounded-[32px] border-2 border-[#2A2D23] bg-surf p-6 text-cream shadow-[8px_8px_0_var(--raise)] md:p-8">
+      <form onSubmit={saveProfile} className="grid gap-5 rounded-[32px] border-2 border-card-line bg-surf p-6 text-tx shadow-[8px_8px_0_var(--raise)] md:p-8">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-bagel text-2xl">Your artist profile</h2>
           <Sticker color="cream" rotate={2} className="text-xs">Your facts</Sticker>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <Field label="Artist name" htmlFor="cp-name">
-            <Input id="cp-name" value={artistName} onChange={(e) => setArtistName(e.target.value)} placeholder="e.g. Temi West" maxLength={80} className="bg-raise text-cream" />
+            <Input id="cp-name" value={artistName} onChange={(e) => setArtistName(e.target.value)} placeholder="e.g. Temi West" maxLength={80} />
           </Field>
           <Field label="Influences (comma separated)" htmlFor="cp-infl">
-            <Input id="cp-infl" value={influences} onChange={(e) => setInfluences(e.target.value)} placeholder="e.g. silky RnB, street percussion" className="bg-raise text-cream" />
+            <Input id="cp-infl" value={influences} onChange={(e) => setInfluences(e.target.value)} placeholder="e.g. silky RnB, street percussion" />
           </Field>
         </div>
         <Field label="Describe your sound" htmlFor="cp-bio">
-          <Textarea id="cp-bio" value={bio} onChange={(e) => setBio(e.target.value)} maxLength={1000} placeholder="What does your music feel like at 1am on the Third Mainland Bridge?" className="bg-raise text-cream" />
+          <Textarea id="cp-bio" value={bio} onChange={(e) => setBio(e.target.value)} maxLength={1000} placeholder="What does your music feel like at 1am on the Third Mainland Bridge?" />
         </Field>
         <div className="grid gap-2">
           <span className="text-sm font-semibold">Your genres</span>
@@ -309,10 +309,10 @@ export function CreateClient({
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <Field label="Who is it for?" htmlFor="cp-aud">
-            <Input id="cp-aud" value={audience} onChange={(e) => setAudience(e.target.value)} placeholder="e.g. alté kids who hate small talk" maxLength={300} className="bg-raise text-cream" />
+            <Input id="cp-aud" value={audience} onChange={(e) => setAudience(e.target.value)} placeholder="e.g. alté kids who hate small talk" maxLength={300} />
           </Field>
           <Field label="Goals for the next 6 months" htmlFor="cp-goals">
-            <Input id="cp-goals" value={goals} onChange={(e) => setGoals(e.target.value)} placeholder="e.g. drop two singles, grow real listeners" maxLength={500} className="bg-raise text-cream" />
+            <Input id="cp-goals" value={goals} onChange={(e) => setGoals(e.target.value)} placeholder="e.g. drop two singles, grow real listeners" maxLength={500} />
           </Field>
         </div>
         <div>
@@ -323,7 +323,7 @@ export function CreateClient({
       </form>
 
       {/* ---- Generator ---- */}
-      <section className="grid gap-5 rounded-[32px] border-2 border-[#2A2D23] bg-deep p-6 text-cream shadow-[10px_10px_0_var(--raise)] md:p-8" aria-label="Plan generator">
+      <section className="grid gap-5 rounded-[32px] border-2 border-card-line bg-deep p-6 text-tx shadow-[10px_10px_0_var(--raise)] md:p-8" aria-label="Plan generator">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="font-bagel text-2xl">Draft my next move</h2>
           <Sticker color="pink" rotate={-2} className="text-xs">Suggestion, not fact</Sticker>
@@ -331,7 +331,7 @@ export function CreateClient({
         <div className="flex flex-wrap items-end gap-3">
           <div className="grid gap-1.5">
             <label htmlFor="plan-type" className="text-sm font-semibold">Plan type</label>
-            <Select id="plan-type" value={planType} onChange={(e) => setPlanType(e.target.value)} className="bg-raise text-cream">
+            <Select id="plan-type" value={planType} onChange={(e) => setPlanType(e.target.value)}>
               {PLAN_TYPES.map((t) => (
                 <option key={t.id} value={t.id}>{t.label}</option>
               ))}
@@ -352,15 +352,15 @@ export function CreateClient({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-bagel text-2xl">{openPlan.title}</p>
-              <p className="text-sm text-[#34372C]">{openPlan.plan.summary}</p>
+              <p className="text-sm text-tx2">{openPlan.plan.summary}</p>
             </div>
             <Sticker color="pink" rotate={2} className="text-xs">Suggestion</Sticker>
           </div>
 
           {openPlan.plan.positioning && (
-            <div className="rounded-3xl border-2 border-[#1A1C17] bg-surf p-5 text-cream">
-              <p className="font-bagel text-lg text-lime">Positioning suggestion</p>
-              <dl className="mt-2 grid gap-2 text-sm text-cream/90">
+            <div className="rounded-3xl border-2 border-inner-line bg-surf p-5 text-tx">
+              <p className="font-bagel text-lg text-accent">Positioning suggestion</p>
+              <dl className="mt-2 grid gap-2 text-sm text-tx/90">
                 <div><dt className="inline font-semibold">Sound: </dt><dd className="inline">{openPlan.plan.positioning.sound}</dd></div>
                 <div><dt className="inline font-semibold">Audience: </dt><dd className="inline">{openPlan.plan.positioning.audience}</dd></div>
                 <div><dt className="inline font-semibold">Angle: </dt><dd className="inline">{openPlan.plan.positioning.angle}</dd></div>
@@ -368,23 +368,23 @@ export function CreateClient({
             </div>
           )}
 
-          <div className="grid gap-6 rounded-3xl border-2 border-[#1A1C17] bg-surf p-5 text-cream md:grid-cols-2">
+          <div className="grid gap-6 rounded-3xl border-2 border-inner-line bg-surf p-5 text-tx md:grid-cols-2">
             {checklist("Release checklist", "releaseChecklist")}
             {checklist("Content ideas", "contentIdeas")}
             {checklist("Promo checklist", "promoChecklist")}
             {openPlan.plan.similarArtists.length > 0 && (
               <div>
-                <p className="font-bagel text-lg text-lime">Catalog artists in your lane</p>
+                <p className="font-bagel text-lg text-accent">Catalog artists in your lane</p>
                 <p className="mt-1 text-xs text-dim">From catalog evidence only{provider.isDemo ? " (fictional demo names)" : ""}.</p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {openPlan.plan.similarArtists.map((a) => (
-                    <span key={a} className="rounded-full border-2 border-[#34372C] px-3 py-1.5 text-sm text-cream/85">{a}</span>
+                    <span key={a} className="rounded-full border-2 border-line px-3 py-1.5 text-sm text-tx/85">{a}</span>
                   ))}
                 </div>
               </div>
             )}
           </div>
-          <p className="text-xs text-[#34372C]">{openPlan.plan.note}</p>
+          <p className="text-xs text-tx2">{openPlan.plan.note}</p>
         </section>
       )}
 
@@ -401,7 +401,7 @@ export function CreateClient({
             {plans.map((p) => (
               <li
                 key={p.id}
-                className="flex flex-wrap items-center gap-3 rounded-3xl border-2 border-[#2A2D23] bg-surf p-4 text-cream transition-colors hover:border-lime/50"
+                className="flex flex-wrap items-center gap-3 rounded-3xl border-2 border-card-line bg-surf p-4 text-tx transition-colors hover:border-accent/50"
               >
                 <button
                   type="button"
@@ -414,13 +414,13 @@ export function CreateClient({
                   </p>
                 </button>
                 <div className="flex items-center gap-1.5">
-                  <button type="button" aria-label={`Open ${p.title}`} onClick={() => setOpenPlan(p)} className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-lime">
+                  <button type="button" aria-label={`Open ${p.title}`} onClick={() => setOpenPlan(p)} className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent">
                     <Plus size={19} aria-hidden />
                   </button>
-                  <button type="button" aria-label={`Rename ${p.title}`} onClick={() => { setRenaming(p.id); setRenameValue(p.title); }} className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-lime">
+                  <button type="button" aria-label={`Rename ${p.title}`} onClick={() => { setRenaming(p.id); setRenameValue(p.title); }} className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent">
                     <Pencil size={18} aria-hidden />
                   </button>
-                  <button type="button" aria-label={`Delete ${p.title}`} onClick={() => setDeleting(p.id)} className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-pink">
+                  <button type="button" aria-label={`Delete ${p.title}`} onClick={() => setDeleting(p.id)} className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent-2">
                     <Trash2 size={18} aria-hidden />
                   </button>
                 </div>
@@ -434,7 +434,7 @@ export function CreateClient({
       <Dialog open={!!renaming} onClose={() => setRenaming(null)} title="Rename plan">
         <div className="grid gap-4">
           <Field label="Plan title" htmlFor="rename-plan">
-            <Input id="rename-plan" value={renameValue} onChange={(e) => setRenameValue(e.target.value)} maxLength={100} className="bg-raise text-cream" />
+            <Input id="rename-plan" value={renameValue} onChange={(e) => setRenameValue(e.target.value)} maxLength={100} />
           </Field>
           <Button onClick={() => renaming && void submitRename(renaming)} disabled={!renameValue.trim()}>
             Save name
@@ -445,12 +445,12 @@ export function CreateClient({
       {/* Delete dialog */}
       <Dialog open={!!deleting} onClose={() => setDeleting(null)} title="Delete plan?">
         <div className="grid gap-4">
-          <p className="text-sm text-cream/85">This plan will be permanently deleted. No undo.</p>
+          <p className="text-sm text-tx/85">This plan will be permanently deleted. No undo.</p>
           <div className="flex gap-3">
             <Button variant="danger" disabled={busy} onClick={() => deleting && void deletePlan(deleting)}>
               {busy ? <Spinner label="Deleting" /> : "Delete it"}
             </Button>
-            <Button variant="ghost" onClick={() => setDeleting(null)} className="text-cream/70">Keep it</Button>
+            <Button variant="ghost" onClick={() => setDeleting(null)} className="text-tx/70">Keep it</Button>
           </div>
         </div>
       </Dialog>

@@ -68,7 +68,7 @@ function PasswordInput({
 function FormError({ message }: { message: string | null }) {
   if (!message) return null;
   return (
-    <p role="alert" className="rounded-2xl border-2 border-dashed border-pink/70 bg-deep px-4 py-3 text-sm font-semibold text-[#FF8A85]">
+    <p role="alert" className="rounded-2xl border-2 border-dashed border-accent-2/70 bg-deep px-4 py-3 text-sm font-semibold text-err">
       {message}
     </p>
   );
@@ -125,10 +125,10 @@ export function LoginForm() {
         {loading ? <Spinner label="Logging in" /> : "Log in"}
       </Button>
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
-        <Link href="/forgot-password" className="font-semibold text-tx2 hover:text-lime">
+        <Link href="/forgot-password" className="font-semibold text-tx2 hover:text-accent">
           Forgot password?
         </Link>
-        <Link href="/signup" className="font-semibold text-lime hover:underline">
+        <Link href="/signup" className="font-semibold text-accent hover:underline">
           New here? Sign up
         </Link>
       </div>
@@ -209,7 +209,7 @@ export function SignupForm() {
       </Button>
       <p className="text-center text-sm text-tx2">
         Already have an account?{" "}
-        <Link href="/login" className="font-semibold text-lime hover:underline">
+        <Link href="/login" className="font-semibold text-accent hover:underline">
           Log in
         </Link>
       </p>
@@ -243,19 +243,19 @@ export function ForgotForm() {
   if (result) {
     return (
       <div className="grid gap-5">
-        <div className="rounded-3xl border-2 border-[#2A2D23] bg-surf p-5 text-cream">
-          <p className="font-bagel text-xl text-lime">Check on it</p>
-          <p className="mt-2 text-sm leading-relaxed text-cream/85">{result.message}</p>
+        <div className="rounded-3xl border-2 border-card-line bg-surf p-5 text-tx">
+          <p className="font-bagel text-xl text-accent">Check on it</p>
+          <p className="mt-2 text-sm leading-relaxed text-tx/85">{result.message}</p>
           {result.devLink && (
             <p className="mt-3 text-sm">
               <span className="text-dim">Development only: </span>
-              <a href={result.devLink} className="font-semibold text-lime break-all hover:underline">
+              <a href={result.devLink} className="font-semibold text-accent break-all hover:underline">
                 Open your reset link
               </a>
             </p>
           )}
         </div>
-        <Link href="/login" className="text-center text-sm font-semibold text-lime hover:underline">
+        <Link href="/login" className="text-center text-sm font-semibold text-accent hover:underline">
           Back to log in
         </Link>
       </div>
@@ -279,7 +279,7 @@ export function ForgotForm() {
       <Button type="submit" disabled={loading} className="w-full">
         {loading ? <Spinner label="Sending" /> : "Send reset link"}
       </Button>
-      <Link href="/login" className="text-center text-sm font-semibold text-tx2 hover:text-lime">
+      <Link href="/login" className="text-center text-sm font-semibold text-tx2 hover:text-accent">
         Back to log in
       </Link>
     </form>
@@ -317,9 +317,9 @@ export function ResetForm() {
     <form onSubmit={submit} className="grid gap-5" noValidate>
       <FormError message={error} />
       {!token && (
-        <p className="rounded-2xl border-2 border-dashed border-[#34372C] bg-deep px-4 py-3 text-sm text-muted">
+        <p className="rounded-2xl border-2 border-dashed border-line bg-deep px-4 py-3 text-sm text-muted">
           No reset token found in this link.{" "}
-          <Link href="/forgot-password" className="font-semibold text-lime hover:underline">
+          <Link href="/forgot-password" className="font-semibold text-accent hover:underline">
             Request a new link
           </Link>
           .

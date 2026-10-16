@@ -131,7 +131,7 @@ export function TrackCard({
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-3xl border-2 border-[#2A2D23] bg-surf p-3 text-cream transition-colors hover:border-lime/60",
+        "flex items-center gap-3 rounded-3xl border-2 border-card-line bg-surf p-3 text-tx transition-colors hover:border-accent/60",
         compact && "p-2.5",
       )}
     >
@@ -152,13 +152,13 @@ export function TrackCard({
               onClick={() => give("like")}
               className={cn(
                 "grid h-11 w-11 cursor-pointer place-items-center rounded-full transition-colors hover:bg-raise",
-                feedback === "like" ? "text-pink" : "text-muted hover:text-pink",
+                feedback === "like" ? "text-accent-2" : "text-muted hover:text-accent-2",
               )}
             >
               <Heart
                 size={20}
                 aria-hidden
-                className={cn(feedback === "like" && "fill-pink", popping && "anim-pop")}
+                className={cn(feedback === "like" && "fill-accent-2", popping && "anim-pop")}
               />
             </button>
             <button
@@ -168,7 +168,7 @@ export function TrackCard({
               onClick={() => give("not_for_me")}
               className={cn(
                 "grid h-11 w-11 cursor-pointer place-items-center rounded-full transition-colors hover:bg-raise",
-                feedback === "not_for_me" ? "text-lime" : "text-muted hover:text-lime",
+                feedback === "not_for_me" ? "text-accent" : "text-muted hover:text-accent",
               )}
             >
               <ThumbsDown size={19} aria-hidden />
@@ -180,7 +180,7 @@ export function TrackCard({
             type="button"
             aria-label={`Save “${track.title}” to a playlist`}
             onClick={onSave}
-            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-lime"
+            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent"
           >
             <ListPlus size={20} aria-hidden />
           </button>
@@ -190,7 +190,7 @@ export function TrackCard({
             type="button"
             aria-label={`Remove “${track.title}” from this playlist`}
             onClick={onRemove}
-            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-pink"
+            className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-accent-2"
           >
             <ThumbsDown size={19} aria-hidden className="rotate-180" />
           </button>
@@ -205,7 +205,7 @@ export function TrackCard({
                 ? `Open “${track.title}” on its music platform`
                 : `Search for “${track.title}” on a music platform (demo track)`
             }
-            className="grid h-11 w-11 place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-cream"
+            className="grid h-11 w-11 place-items-center rounded-full text-muted transition-colors hover:bg-raise hover:text-tx"
           >
             <ExternalLink size={19} aria-hidden />
           </a>
